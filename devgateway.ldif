@@ -13,17 +13,32 @@ objectClass: olcSchemaConfig
 cn: devgateway
 # Identifiers
 olcObjectIdentifier: dgDevGateway 1.3.6.1.4.1.46267
-olcObjectIdentifier: dgAbstract dgDevGateway:0
+olcObjectIdentifier: dgAttributes dgDevGateway:0
+olcObjectIdentifier: dgClasses dgDevGateway:1
 # Attributes
-olcAttributeTypes: ( dgAbstract:0 NAME 'billTo'
+olcAttributeTypes: ( dgAttributes:0 NAME 'billTo'
   DESC 'Billing item'
   SUP distinguishedName )
-olcAttributeTypes: ( dgAbstract:1 NAME 'jsonProperties'
+olcAttributeTypes: ( dgAttributes:1 NAME 'jsonProperties'
   DESC 'Object properties in JSON format'
   EQUALITY caseExactMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{1024} )
+olcAttributeTypes: ( dgAttributes:2 NAME 'jiraProjectCode'
+  SINGLE-VALUE
+  DESC 'Short identifier for the project'
+  EQUALITY caseIgnoreMatch
+  SUBSTR caseIgnoreSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{32} )
 # Object classes
-olcObjectClasses: ( dgAbstract:2 NAME 'jsonObject'
+olcObjectClasses: ( dgClasses:0 NAME 'jsonObject'
   DESC 'An object with properties in JSON format'
   SUP top AUXILIARY
   MAY ( jsonProperties ) )
+olcObjectClasses: ( dgClasses:1 NAME 'googleGroup'
+  DESC 'Google Group (mailing list)'
+  SUP top AUXILIARY
+  MAY ( mail $ mailLocalAddress ))
+olcObjectClasses: ( dgClasses:2 NAME 'jiraProject'
+  DESC 'A project in Atlassian Jira'
+  SUP top AUXILIARY
+  MUST ( jiraProjectCode ))
