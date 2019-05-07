@@ -47,16 +47,16 @@ olcObjectClasses: ( dgClasses:0 NAME 'jsonObject'
 olcObjectClasses: ( dgClasses:1 NAME 'googleGroup'
   DESC 'Google Group (mailing list)'
   SUP top AUXILIARY
-  MAY ( mail $ mailLocalAddress ))
+  MAY ( mail $ mailLocalAddress ) )
 olcObjectClasses: ( dgClasses:2 NAME 'jiraProject'
   DESC 'A project in Atlassian Jira'
   SUP top AUXILIARY
-  MUST ( jiraProjectCode ))
+  MUST ( jiraProjectCode ) )
 olcObjectClasses: ( dgClasses:3 NAME 'timeSpan'
   DESC 'Time period with optional start and end'
   SUP top AUXILIARY
-  MAY ( startTime $ endTime ))
+  MAY ( startTime $ endTime ) )
 olcObjectClasses: ( dgClasses:4 NAME 'billableObject'
   DESC 'An object usage of which can be billed to another object'
   SUP top AUXILIARY
-  MUST ( billTo ))
+  MUST ( billTo ) )
