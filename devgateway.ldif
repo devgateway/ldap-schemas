@@ -56,3 +56,7 @@ olcObjectClasses: ( dgClasses:3 NAME 'timeSpan'
   DESC 'Time period with optional start and end'
   SUP top AUXILIARY
   MAY ( startTime $ endTime ))
+olcObjectClasses: ( dgClasses:4 NAME 'billableObject'
+  DESC 'An object usage of which can be billed to another object'
+  SUP top AUXILIARY
+  MUST ( billTo ))
