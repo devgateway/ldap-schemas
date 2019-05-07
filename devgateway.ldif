@@ -39,6 +39,12 @@ olcAttributeTypes: ( dgAttributes:4 NAME 'endTime'
   SINGLE-VALUE
   DESC 'End of the time span'
   SUP UTCTime )
+olcAttributeTypes: ( dgAttributes:5 NAME 'awsArn'
+  SINGLE-VALUE
+  DESC 'Amazon Resource Name'
+  EQUALITY caseExactMatch
+  SUBSTR caseExactSubstringsMatch
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
 # Object classes
 olcObjectClasses: ( dgClasses:0 NAME 'jsonObject'
   DESC 'An object with properties in JSON format'
@@ -60,3 +66,16 @@ olcObjectClasses: ( dgClasses:4 NAME 'billableObject'
   DESC 'An object usage of which can be billed to another object'
   SUP top AUXILIARY
   MUST ( billTo ) )
+olcObjectClasses: ( dgClasses:5 NAME 'awsObject'
+  DESC 'Abstract object in AWS'
+  SUP top ABSTRACT
+  MAY ( awsArn $ cn $ owner $ seeAlso $ ou $ o $ l $ description ) )
+olcObjectClasses: ( dgClasses:6 NAME 'awsInstance'
+  DESC 'EC2 instance'
+  SUP awsObject STRUCTURAL
+  MUST ( awsInstanceType )
+  MAY ( awsAmiId $ blockDevice ) )
+olcObjectClasses: ( dgClasses:7 NAME 'awsVolume'
+  DESC 'EBS volume'
+  SUP awsObject STRUCTURAL
+  MAY ( awsVolumeType $ awsSnapshotId $ blockDeviceName ) )
