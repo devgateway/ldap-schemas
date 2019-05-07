@@ -29,6 +29,14 @@ olcAttributeTypes: ( dgAttributes:2 NAME 'jiraProjectCode'
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{32} )
+olcAttributeTypes: ( dgAttributes:3 NAME 'startTime'
+  SINGLE-VALUE
+  DESC 'Start of the time span'
+  SUP UTCTime )
+olcAttributeTypes: ( dgAttributes:4 NAME 'endTime'
+  SINGLE-VALUE
+  DESC 'End of the time span'
+  SUP UTCTime )
 # Object classes
 olcObjectClasses: ( dgClasses:0 NAME 'jsonObject'
   DESC 'An object with properties in JSON format'
@@ -42,3 +50,7 @@ olcObjectClasses: ( dgClasses:2 NAME 'jiraProject'
   DESC 'A project in Atlassian Jira'
   SUP top AUXILIARY
   MUST ( jiraProjectCode ))
+olcObjectClasses: ( dgClasses:3 NAME 'timeSpan'
+  DESC 'Time period with optional start and end'
+  SUP top STRUCTURAL
+  MAY ( startTime $ endTime ))
