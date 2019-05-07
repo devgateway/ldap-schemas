@@ -54,5 +54,5 @@ olcObjectClasses: ( dgClasses:2 NAME 'jiraProject'
   MUST ( jiraProjectCode ))
 olcObjectClasses: ( dgClasses:3 NAME 'timeSpan'
   DESC 'Time period with optional start and end'
-  SUP top STRUCTURAL
+  SUP top AUXILIARY
   MAY ( startTime $ endTime ))
