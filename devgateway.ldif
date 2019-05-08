@@ -22,10 +22,14 @@ olcAttributeTypes: ( dgAttributes:2 NAME 'jiraProjectCode'
 olcAttributeTypes: ( dgAttributes:3 NAME 'startTime'
   SINGLE-VALUE
   DESC 'Start of the time span'
+  EQUALITY generalizedTimeMatch
+  ORDERING generalizedTimeOrderingMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 )
 olcAttributeTypes: ( dgAttributes:4 NAME 'endTime'
   SINGLE-VALUE
   DESC 'End of the time span'
+  EQUALITY generalizedTimeMatch
+  ORDERING generalizedTimeOrderingMatch
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 )
 olcAttributeTypes: ( dgAttributes:5 NAME 'awsArn'
   SINGLE-VALUE
