@@ -53,15 +53,15 @@ olcAttributeTypes: ( dgAttributes:6
   NAME 'awsInstanceType'
   SINGLE-VALUE
   DESC 'Instance type name'
-  SUP IA5String
   EQUALITY caseIgnoreIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   )
 olcAttributeTypes: ( dgAttributes:7
   NAME 'awsAmiId'
   SINGLE-VALUE
   DESC 'Amazon Machine Image ID'
-  SUP IA5String
   EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   )
 olcAttributeTypes: ( dgAttributes:8
   NAME 'blockDevice'
@@ -71,21 +71,21 @@ olcAttributeTypes: ( dgAttributes:8
 olcAttributeTypes: ( dgAttributes:9
   NAME 'awsVolumeType'
   DESC 'Storage type class'
-  SUP IA5String
   EQUALITY caseIgnoreIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   SUBSTR caseIgnoreIA5SubstringsMatch
   )
 olcAttributeTypes: ( dgAttributes:10
   NAME 'awsSnapshotId'
   DESC 'ID of the snapshot used to create the image'
-  SUP IA5String
   EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   )
 olcAttributeTypes: ( dgAttributes:11
   NAME 'blockDeviceName'
   DESC 'Block device name'
-  SUP IA5String
   EQUALITY caseExactIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   )
 # Object classes
 olcObjectClasses: ( dgClasses:0
