@@ -6,94 +6,134 @@ olcObjectIdentifier: dgDevGateway 1.3.6.1.4.1.46267
 olcObjectIdentifier: dgAttributes dgDevGateway:0
 olcObjectIdentifier: dgClasses dgDevGateway:1
 # Attributes
-olcAttributeTypes: ( dgAttributes:0 NAME 'billTo'
+olcAttributeTypes: ( dgAttributes:0
+  NAME 'billTo'
   DESC 'Billing item'
-  SUP distinguishedName )
-olcAttributeTypes: ( dgAttributes:1 NAME 'jsonProperties'
+  SUP distinguishedName
+  )
+olcAttributeTypes: ( dgAttributes:1
+  NAME 'jsonProperties'
   DESC 'Object properties in JSON format'
   EQUALITY caseExactMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{1024} )
-olcAttributeTypes: ( dgAttributes:2 NAME 'jiraProjectCode'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{1024}
+  )
+olcAttributeTypes: ( dgAttributes:2
+  NAME 'jiraProjectCode'
   SINGLE-VALUE
   DESC 'Short identifier for the project'
   EQUALITY caseIgnoreMatch
   SUBSTR caseIgnoreSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{32} )
-olcAttributeTypes: ( dgAttributes:3 NAME 'startTime'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.44{32}
+  )
+olcAttributeTypes: ( dgAttributes:3
+  NAME 'startTime'
   SINGLE-VALUE
   DESC 'Start of the time span'
   EQUALITY generalizedTimeMatch
   ORDERING generalizedTimeOrderingMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 )
-olcAttributeTypes: ( dgAttributes:4 NAME 'endTime'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24
+  )
+olcAttributeTypes: ( dgAttributes:4
+  NAME 'endTime'
   SINGLE-VALUE
   DESC 'End of the time span'
   EQUALITY generalizedTimeMatch
   ORDERING generalizedTimeOrderingMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24 )
-olcAttributeTypes: ( dgAttributes:5 NAME 'awsArn'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.24
+  )
+olcAttributeTypes: ( dgAttributes:5
+  NAME 'awsArn'
   SINGLE-VALUE
   DESC 'Amazon Resource Name'
   EQUALITY caseExactMatch
   SUBSTR caseExactSubstringsMatch
-  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 )
-olcAttributeTypes: ( dgAttributes:6 NAME 'awsInstanceType'
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+  )
+olcAttributeTypes: ( dgAttributes:6
+  NAME 'awsInstanceType'
   SINGLE-VALUE
   DESC 'Instance type name'
   SUP IA5String
-  EQUALITY caseIgnoreIA5Match )
-olcAttributeTypes: ( dgAttributes:7 NAME 'awsAmiId'
+  EQUALITY caseIgnoreIA5Match
+  )
+olcAttributeTypes: ( dgAttributes:7
+  NAME 'awsAmiId'
   SINGLE-VALUE
   DESC 'Amazon Machine Image ID'
   SUP IA5String
-  EQUALITY caseExactIA5Match )
-olcAttributeTypes: ( dgAttributes:8 NAME 'blockDevice'
+  EQUALITY caseExactIA5Match
+  )
+olcAttributeTypes: ( dgAttributes:8
+  NAME 'blockDevice'
   DESC 'DN of attached block device'
-  SUP distinguishedName )
-olcAttributeTypes: ( dgAttributes:9 NAME 'awsVolumeType'
+  SUP distinguishedName
+  )
+olcAttributeTypes: ( dgAttributes:9
+  NAME 'awsVolumeType'
   DESC 'Storage type class'
   SUP IA5String
   EQUALITY caseIgnoreIA5Match
-  SUBSTR caseIgnoreIA5SubstringsMatch )
-olcAttributeTypes: ( dgAttributes:10 NAME 'awsSnapshotId'
+  SUBSTR caseIgnoreIA5SubstringsMatch
+  )
+olcAttributeTypes: ( dgAttributes:10
+  NAME 'awsSnapshotId'
   DESC 'ID of the snapshot used to create the image'
   SUP IA5String
-  EQUALITY caseExactIA5Match )
-olcAttributeTypes: ( dgAttributes:11 NAME 'blockDeviceName'
+  EQUALITY caseExactIA5Match
+  )
+olcAttributeTypes: ( dgAttributes:11
+  NAME 'blockDeviceName'
   DESC 'Block device name'
   SUP IA5String
-  EQUALITY caseExactIA5Match )
+  EQUALITY caseExactIA5Match
+  )
 # Object classes
-olcObjectClasses: ( dgClasses:0 NAME 'jsonObject'
+olcObjectClasses: ( dgClasses:0
+  NAME 'jsonObject'
   DESC 'An object with properties in JSON format'
   SUP top AUXILIARY
-  MAY ( jsonProperties ) )
-olcObjectClasses: ( dgClasses:1 NAME 'googleGroup'
+  MAY ( jsonProperties )
+  )
+olcObjectClasses: ( dgClasses:1
+  NAME 'googleGroup'
   DESC 'Google Group (mailing list)'
   SUP top AUXILIARY
-  MAY ( mail $ mailLocalAddress ) )
-olcObjectClasses: ( dgClasses:2 NAME 'jiraProject'
+  MAY ( mail $ mailLocalAddress )
+  )
+olcObjectClasses: ( dgClasses:2
+  NAME 'jiraProject'
   DESC 'A project in Atlassian Jira'
   SUP top AUXILIARY
-  MUST ( jiraProjectCode ) )
-olcObjectClasses: ( dgClasses:3 NAME 'timeSpan'
+  MUST ( jiraProjectCode )
+  )
+olcObjectClasses: ( dgClasses:3
+  NAME 'timeSpan'
   DESC 'Time period with optional start and end'
   SUP top AUXILIARY
-  MAY ( startTime $ endTime ) )
-olcObjectClasses: ( dgClasses:4 NAME 'billableObject'
+  MAY ( startTime $ endTime )
+  )
+olcObjectClasses: ( dgClasses:4
+  NAME 'billableObject'
   DESC 'An object usage of which can be billed to another object'
   SUP top AUXILIARY
-  MUST ( billTo ) )
-olcObjectClasses: ( dgClasses:5 NAME 'awsObject'
+  MUST ( billTo )
+  )
+olcObjectClasses: ( dgClasses:5
+  NAME 'awsObject'
   DESC 'Abstract object in AWS'
   SUP top ABSTRACT
-  MAY ( awsArn $ cn $ owner $ seeAlso $ ou $ o $ l $ description ) )
-olcObjectClasses: ( dgClasses:6 NAME 'awsInstance'
+  MAY ( awsArn $ cn $ owner $ seeAlso $ ou $ o $ l $ description )
+  )
+olcObjectClasses: ( dgClasses:6
+  NAME 'awsInstance'
   DESC 'EC2 instance'
   SUP awsObject STRUCTURAL
-  MUST ( awsInstanceType )
-  MAY ( awsAmiId $ blockDevice ) )
-olcObjectClasses: ( dgClasses:7 NAME 'awsVolume'
+  MUST ( awsInstanceType)
+  MAY ( awsAmiId $ blockDevice )
+  )
+olcObjectClasses: ( dgClasses:7
+  NAME 'awsVolume'
   DESC 'EBS volume'
   SUP awsObject STRUCTURAL
-  MAY ( awsVolumeType $ awsSnapshotId $ blockDeviceName ) )
+  MAY ( awsVolumeType $ awsSnapshotId $ blockDeviceName )
+  )
