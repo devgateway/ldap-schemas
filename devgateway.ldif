@@ -87,6 +87,12 @@ olcAttributeTypes: ( dgAttributes:11
   EQUALITY caseExactIA5Match
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.26
   )
+olcAttributeTypes: ( dgAttributes:12
+  NAME 'mailAlias'
+  DESC 'Email alias'
+  EQUALITY caseIgnoreIA5Match
+  SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{256}
+  )
 # Object classes
 olcObjectClasses: ( dgClasses:0
   NAME 'jsonObject'
@@ -95,10 +101,11 @@ olcObjectClasses: ( dgClasses:0
   MAY ( jsonProperties )
   )
 olcObjectClasses: ( dgClasses:1
-  NAME 'googleGroup'
-  DESC 'Google Group (mailing list)'
+  NAME 'inetMailRecipient'
+  DESC 'Email account with address and aliases'
   SUP top AUXILIARY
-  MAY ( mail $ mailLocalAddress )
+  MUST ( mail )
+  MAY ( mailAlias )
   )
 olcObjectClasses: ( dgClasses:2
   NAME 'jiraProject'
