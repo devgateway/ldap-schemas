@@ -18,7 +18,7 @@ olcAttributeTypes: ( dgAttributes:1
   SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{1024}
   )
 olcAttributeTypes: ( dgAttributes:2
-  NAME 'jiraProjectCode'
+  NAME 'jiraProjectKey'
   SINGLE-VALUE
   DESC 'Short identifier for the project'
   EQUALITY caseIgnoreMatch
@@ -111,7 +111,7 @@ olcObjectClasses: ( dgClasses:2
   NAME 'jiraProject'
   DESC 'A project in Atlassian Jira'
   SUP top AUXILIARY
-  MUST ( jiraProjectCode )
+  MUST ( jiraProjectKey )
   )
 olcObjectClasses: ( dgClasses:3
   NAME 'timeSpan'
